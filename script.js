@@ -1,59 +1,54 @@
 let zindexcount =1;
 let NoteObjects = [];
 let ids = 1;
-
-
-
-// dragElement(document.getElementById("drag2"));
+let lightdark=true;
 
 function dragElement(elmnt) {
     var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
     if (document.getElementById(elmnt.id + "header")) {
-        // if present, the header is where you move the DIV from:
         document.getElementById(elmnt.id + "header").onmousedown = dragMouseDown;
     } else {
-        // otherwise, move the DIV from anywhere inside the DIV:
         elmnt.onmousedown = dragMouseDown;
     }
 
     function dragMouseDown(e) {
         e = e || window.event;
         e.preventDefault();
-        // get the mouse cursor position at startup:
         pos3 = e.clientX;
         pos4 = e.clientY;
         document.onmouseup = closeDragElement;
-        // call a function whenever the cursor moves:
         document.onmousemove = elementDrag;
     }
 
     function elementDrag(e) {
         e = e || window.event;
         e.preventDefault();
-        // calculate the new cursor position:
         pos1 = pos3 - e.clientX;
         pos2 = pos4 - e.clientY;
         pos3 = e.clientX;
         pos4 = e.clientY;
-        // set the element's new position:
         elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
         elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
     }
 
     function closeDragElement() {
-        // stop moving when mouse button is released:
         document.onmouseup = null;
         document.onmousemove = null;
     }
 }
 
-function functionalities(ele){
-    document.querySelector(".settingiconon").addEventListener('click',()=>{
-        document.querySelector(".menu").classList.toggle('hide');
-    })
-}
+
+
 
 const createStickyNoteSmall = (notess)=>{
+
+    if(NoteObjects.length===0){
+        document.querySelector('.no-note').classList.remove('hide');
+    }
+    else{
+        document.querySelector('.no-note').classList.add('hide');
+    }
+
     let divsmall = document.createElement('div');
     divsmall.classList.add('note');
     divsmall.id = `note${notess.id}`
@@ -101,6 +96,12 @@ const createStickyNoteSmall = (notess)=>{
             }
             return true;
         });
+        if(NoteObjects.length===0){
+            document.querySelector('.no-note').classList.remove('hide');
+        }
+        else{
+            document.querySelector('.no-note').classList.add('hide');
+        }
     })
 
     let input = document.getElementById('searchtext');
@@ -127,6 +128,8 @@ const createStickyNoteSmall = (notess)=>{
             }
         }
     })
+
+    
 
 }
 
@@ -181,7 +184,6 @@ const createStickyNoteFull = (note)=>{
 
     
     dragElement(document.getElementById(`drag${note.id}`));
-    // functionalities(document.getElementById(`drag${note.id}`));
     document.querySelector(`#drag${note.id} .settingiconon`).addEventListener('click', (e) => {
         e.stopPropagation()
         document.querySelector(`#drag${note.id}`).querySelector('.menu').classList.toggle('hide')
@@ -203,6 +205,12 @@ const createStickyNoteFull = (note)=>{
             }
             return true;
         });
+        if(NoteObjects.length===0){
+            document.querySelector('.no-note').classList.remove('hide');
+        }
+        else{
+            document.querySelector('.no-note').classList.add('hide');
+        }
     })
 
 
@@ -236,6 +244,13 @@ const createStickyNoteFull = (note)=>{
         }
         else{
             document.querySelector(`#drag${note.id}`).classList.add('hide');
+        }
+
+        if(NoteObjects.length===0){
+            document.querySelector('.no-note').classList.remove('hide');
+        }
+        else{
+            document.querySelector('.no-note').classList.add('hide');
         }
         
     })
@@ -316,4 +331,28 @@ document.querySelector('#drag .plusiconclick').addEventListener('click',()=>{
 
 document.querySelector('#drag .closeiconclick').addEventListener('click',()=>{
     document.querySelector('.main').classList.add('hide');
+})
+
+document.querySelector('#drag .settingiconclick').addEventListener('click',(e)=>{
+    e.stopPropagation();
+    document.querySelector('.setting-box').classList.toggle('hide');
+})
+
+
+document.getElementById('light').addEventListener('click',()=>{
+    document.getElementById('light').checked = true;
+    document.getElementById('dark').checked = false;
+
+    // document.getElementById('drag').classList.add('backgroundcolorwhite');
+    // document.getElementById('drag').classList.add('colorblack');
+
+})
+
+
+document.getElementById('dark').addEventListener('click',()=>{
+    document.getElementById('light').checked = false;
+    document.getElementById('dark').checked = true;
+
+    // document.getElementById('drag').classList.remove('backgroundcolorwhite');
+    // document.getElementById('drag').classList.remove('colorblack');
 })
