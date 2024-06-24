@@ -7,6 +7,11 @@ body{
     font-family:Arial, Helvetica, sans-serif;
 }
 
+#mainspace{
+    width: 100%;
+    height: 100%;
+}
+
 .main{
     background-color: #202020;
     width: 320px;
@@ -19,6 +24,9 @@ body{
     min-width: 320px;
     min-height: 500px;
     overflow: hidden;
+    bottom: 0;
+    right: 0;
+    z-index: 0;
 }
 
 .header{
@@ -137,4 +145,225 @@ body{
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 14px;
     margin-top: 15px;
+}
+
+.open-note{
+    background-color: #333333;
+    width: 305px;
+    height: 250px;
+    border-radius: 7px;
+    border: 1px solid rgb(87, 86, 86);
+    box-shadow: 0px 20px 45px rgb(0,0,0,0.7);
+    position: absolute;
+    top: 0;
+    left: 0;
+    resize: both;
+    min-width: 280px;
+    min-height: 180px;
+    overflow: hidden;
+    display: block;
+}
+
+.header-for-note{
+    background-color: #e6b905;
+    width: 100%;
+    height: 32px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    
+}
+
+.plusiconon{
+    width: 35px;
+    display: flex;
+}
+.plusiconon img{
+    width: 17px;
+    margin: auto;
+    opacity: 0.5;
+}
+
+.plusiconon:hover{
+    background-color: #d9ad03;
+}
+
+.settingcrossiconon{
+    display: flex;
+}
+
+.settingiconon{
+    width: 35px;
+    display: flex;
+}
+.settingiconon img{
+    width: 15px;
+    margin: auto;
+    opacity: 0.5;
+}
+
+.settingiconon:hover{
+    background-color: #d9ad03;
+}
+
+.closeiconon{
+    width: 35px;
+    display: flex;
+}
+.closeiconon img{
+    width: 13px;
+    margin: auto;
+    opacity: 0.5;
+}
+
+.closeiconon:hover{
+    background-color: #d9ad03;
+}
+
+.textareaon{
+    resize: none;
+    outline: none;
+    margin: 0;
+    padding: 0;
+    width: 100% ;
+    height: 100%;
+    border: 0;
+    background-color: #333333;
+    color: white;
+    line-height: 1.5;
+    padding-top: 10px;
+    /* overflow-y: auto; */
+
+}
+
+.textareaon::placeholder{
+    font-size: 15px;
+    /* padding-left: 10px; */
+}
+
+.textcontainer{
+    height: calc(100% - 42px);
+    margin-left: 8px;
+}
+
+textarea::-webkit-scrollbar {
+    width: 5px;
+}
+
+textarea::-webkit-scrollbar-track {
+    -webkit-box-shadow: 0;
+}
+
+textarea::-webkit-scrollbar-thumb {
+  background-color: #444444;
+}
+
+
+
+
+.menu{
+    width: 280px;
+    height: 120px;
+    background-color: #333333;
+    position: absolute;
+    z-index: 2;
+    right: 0;
+    top: 32px;
+    border-bottom-left-radius: 5px;
+    border: 1px solid rgb(87, 86, 86);
+    box-shadow: 0px 20px 45px rgb(0,0,0,0.7);
+    border-right: 0;
+    border-top: 0;
+}
+
+.hide{
+    display: none;
+}
+
+.color1{
+    background-color: #e6b905;
+    width: calc(100% / 7);
+    height: 40px;
+}
+.color2{
+    background-color: #6fd262;
+    width: calc(100% / 7);
+    height: 40px;
+}
+.color3{
+    background-color: #ea86c2;
+    width: calc(100% / 7);
+    height: 40px;
+}
+.color4{
+    background-color: #c78eff;
+    width: calc(100% / 7);
+    height: 40px;
+}
+.color5{
+    background-color: #5ac0e7;
+    width: calc(100% / 7);
+    height: 40px;
+}
+.color6{
+    background-color: #aaaaaa;
+    width: calc(100% / 7);
+    height: 40px;
+}
+.color7{
+    background-color: #454545;
+    width: calc(100% / 7);
+    height: 40px;
+}
+
+.nlbtn{
+    display: flex;
+    width: 100%;
+    height: 40px;
+    align-items: center;
+}
+.nlbtn:hover{
+    background-color: #454545;
+}
+.nlbtn img{
+    width: 20px;
+    height: 20px;
+    opacity: 0.7;
+    margin-left: 20px;
+}
+.nlbtntxt{
+    margin: 0;
+    margin-left: 15px;
+    color: white;
+    opacity: 0.7;
+    font-weight: 100;
+    letter-spacing: 1px;
+    font-size: 13px;
+}
+
+
+
+.dltbtn{
+    display: flex;
+    width: 100%;
+    height: 40px;
+    align-items: center;
+}
+.dltbtn:hover{
+    background-color: #454545;
+}
+.dltbtn img{
+    width: 20px;
+    height: 20px;
+    opacity: 0.7;
+    margin-left: 20px;
+}
+.dltbtntxt{
+    margin: 0;
+    margin-left: 15px;
+    color: white;
+    opacity: 0.7;
+    font-weight: 100;
+    letter-spacing: 1px;
+    font-size: 13px;
 }
