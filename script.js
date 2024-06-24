@@ -49,6 +49,12 @@ function dragElement(elmnt) {
     }
 }
 
+function functionalities(ele){
+    document.querySelector(".settingiconon").addEventListener('click',()=>{
+        document.querySelector(".menu").classList.toggle('hide');
+    })
+}
+
 const createStickyNoteFull = (note)=>{
     let divhai = document.createElement('div');
     divhai.classList.add('open-note');
@@ -99,10 +105,13 @@ const createStickyNoteFull = (note)=>{
 
     
     dragElement(document.getElementById(`drag${note.id}`));
-
-    document.querySelector(".settingiconon").addEventListener('click',()=>{
-        document.querySelector(".menu").classList.toggle('hide');
+    // functionalities(document.getElementById(`drag${note.id}`));
+    document.querySelector(`#drag${note.id} .settingiconon`).addEventListener('click', (e) => {
+        e.stopPropagation()
+        document.querySelector(`#drag${note.id}`).querySelector('.menu').classList.toggle('hide')
     })
+
+    
 }
 
 
