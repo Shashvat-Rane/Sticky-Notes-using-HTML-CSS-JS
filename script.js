@@ -4,8 +4,6 @@ let ids = 1;
 
 
 
-// Make the DIV element draggable:
-dragElement(document.getElementById("drag"));
 // dragElement(document.getElementById("drag2"));
 
 function dragElement(elmnt) {
@@ -55,6 +53,53 @@ function functionalities(ele){
     })
 }
 
+const createStickyNoteSmall = (notess)=>{
+    let divsmall = document.createElement('div');
+    divsmall.classList.add('note');
+    divsmall.id = `note${notess.id}`
+
+    divsmall.innerHTML=`
+        <div class="topline"></div>
+        <div class="timenoption">
+            <h6 class="time">${notess.time}</h6>
+            <img class="option" src="./icons/optionblack.png">
+        </div>
+        <div class="opendltlist hide">
+                    <div class="openbtn">
+                        <img src="./icons/open.png">
+                        <h6 class="openbtntxt">Open</h6>
+                    </div>
+                    <div class="dltbtninlist">
+                        <img src="./icons/delete.png">
+                        <h6 class="dltbtninlisttxt">Delete</h6>
+                    </div>
+                </div>
+        <div id="text${notess.id}"class="text">
+        <h6 style="color: #efefef;opacity: 0.7;font-weight:10;font-size:15px;margin:15px 10px;">Take a note...</h6>
+        </div>
+    `
+
+    document.querySelector('.notes-list').append(divsmall);
+
+    document.querySelector(`#note${notess.id} .option`).addEventListener('click', (e) => {
+        e.stopPropagation()
+        document.querySelector(`#note${notess.id}`).querySelector('.opendltlist').classList.toggle('hide')
+    })
+
+    document.querySelector(`#note${notess.id} .openbtn`).addEventListener('click',(e)=>{
+        e.stopPropagation();
+        document.querySelector(`#drag${notess.id}`).classList.remove('hide');
+    })
+
+    document.querySelector(`#note${notess.id} .dltbtninlist`).addEventListener('click',(e)=>{
+        e.stopPropagation();
+        document.querySelector(`#drag${notess.id}`).classList.add('hide');
+        document.querySelector(`#note${notess.id}`).classList.add('hide');
+    })
+
+}
+
+
 const createStickyNoteFull = (note)=>{
     let divhai = document.createElement('div');
     divhai.classList.add('open-note');
@@ -82,7 +127,7 @@ const createStickyNoteFull = (note)=>{
         </div>
 
         <div id="drag${note.id}header" class="header-for-note">
-            <div class="plusiconon">
+            <div class="plusiconon plusiconclick">
                 <img src="./icons/plusblack.png">
             </div>
             <div class="settingcrossiconon">
@@ -111,7 +156,98 @@ const createStickyNoteFull = (note)=>{
         document.querySelector(`#drag${note.id}`).querySelector('.menu').classList.toggle('hide')
     })
 
+    document.querySelector(`#drag${note.id} .nlbtn`).addEventListener('click',(e)=>{
+        e.stopPropagation();
+        document.querySelector('.main').classList.remove('hide');
+    })
+
+    document.querySelector(`#drag${note.id} .dltbtn`).addEventListener('click',(e)=>{
+
+        e.stopPropagation();  
+        document.querySelector(`#drag${note.id}`).classList.add('hide');
+        document.querySelector(`#note${note.id}`).classList.add('hide');
+    })
+
+
+
     
+    document.querySelector(`#drag${note.id} .plusiconclick`).addEventListener('click', (e) => {
+        e.stopPropagation()
+        let note = {
+            id:ids,
+            txt:'',
+            z:zindexcount,
+            time:new Date().toLocaleTimeString("en-us", { hour: "2-digit", minute: "2-digit" }),
+        };
+        NoteObjects.push(note);
+        ids=ids+1;
+        zindexcount=zindexcount+1;
+        createStickyNoteFull(note);
+        createStickyNoteSmall(note);
+    })
+
+    document.querySelector(`#drag${note.id} .closeiconon`).addEventListener('click', (e) => {
+        if(note.txt===''){
+            document.querySelector(`#note${note.id}`).classList.add('hide');
+        }
+        document.querySelector(`#drag${note.id}`).classList.add('hide');
+        
+    })
+
+    document.querySelector(`#drag${note.id} .color1`).addEventListener('click', (e) => {
+        e.stopPropagation()
+        document.querySelector(`#drag${note.id}`).querySelector('.header-for-note').style.backgroundColor = "#e6b905";
+        document.querySelector(`#note${note.id}`).querySelector('.topline').style.backgroundColor = "#e6b905";
+        document.querySelector(`#note${note.id}`).querySelector('.time').style.color = "#e6b905";
+    })
+    document.querySelector(`#drag${note.id} .color2`).addEventListener('click', (e) => {
+        e.stopPropagation()
+        document.querySelector(`#drag${note.id}`).querySelector('.header-for-note').style.backgroundColor = "#6fd262";
+        document.querySelector(`#note${note.id}`).querySelector('.topline').style.backgroundColor = "#6fd262";
+        document.querySelector(`#note${note.id}`).querySelector('.time').style.color = "#6fd262";
+    })
+    document.querySelector(`#drag${note.id} .color3`).addEventListener('click', (e) => {
+        e.stopPropagation()
+        document.querySelector(`#drag${note.id}`).querySelector('.header-for-note').style.backgroundColor = "#ea86c2";
+        document.querySelector(`#note${note.id}`).querySelector('.topline').style.backgroundColor = "#ea86c2";
+        document.querySelector(`#note${note.id}`).querySelector('.time').style.color = "#ea86c2";
+    })
+    document.querySelector(`#drag${note.id} .color4`).addEventListener('click', (e) => {
+        e.stopPropagation()
+        document.querySelector(`#drag${note.id}`).querySelector('.header-for-note').style.backgroundColor = "#c78eff";
+        document.querySelector(`#note${note.id}`).querySelector('.topline').style.backgroundColor = "#c78eff";
+        document.querySelector(`#note${note.id}`).querySelector('.time').style.color = "#c78eff";
+    })
+    document.querySelector(`#drag${note.id} .color5`).addEventListener('click', (e) => {
+        e.stopPropagation()
+        document.querySelector(`#drag${note.id}`).querySelector('.header-for-note').style.backgroundColor = "#5ac0e7";
+        document.querySelector(`#note${note.id}`).querySelector('.topline').style.backgroundColor = "#5ac0e7";
+        document.querySelector(`#note${note.id}`).querySelector('.time').style.color = "#5ac0e7";
+    })
+    document.querySelector(`#drag${note.id} .color6`).addEventListener('click', (e) => {
+        e.stopPropagation()
+        document.querySelector(`#drag${note.id}`).querySelector('.header-for-note').style.backgroundColor = "#aaaaaa";
+        document.querySelector(`#note${note.id}`).querySelector('.topline').style.backgroundColor = "#aaaaaa";
+        document.querySelector(`#note${note.id}`).querySelector('.time').style.color = "#aaaaaa";
+    })
+    document.querySelector(`#drag${note.id} .color7`).addEventListener('click', (e) => {
+        e.stopPropagation()
+        document.querySelector(`#drag${note.id}`).querySelector('.header-for-note').style.backgroundColor = "red";
+        document.querySelector(`#note${note.id}`).querySelector('.topline').style.backgroundColor = "red";
+        document.querySelector(`#note${note.id}`).querySelector('.time').style.color = "red";
+    })
+
+    const ta = divhai.querySelector('.textareaon');
+    ta.addEventListener('input',(e)=>{
+        note.txt=e.target.value;
+        if(note.txt===''){
+            document.querySelector(`#note${note.id}`).querySelector('.text').innerHTML=`<h6 style="color: #efefef;opacity: 0.7;font-weight:10;font-size:15px;margin:15px 10px;">Take a note...</h6>`;
+
+        }else{
+            document.querySelector(`#note${note.id}`).querySelector('.text').innerHTML=note.txt;
+        }
+    })
+
 }
 
 
@@ -122,10 +258,16 @@ document.querySelector('#drag .plusiconclick').addEventListener('click',()=>{
         id:ids,
         txt:'',
         z:zindexcount,
+        time:new Date().toLocaleTimeString("en-us", { hour: "2-digit", minute: "2-digit" }),
     };
     NoteObjects.push(note);
     ids=ids+1;
     zindexcount=zindexcount+1;
     createStickyNoteFull(note);
+    createStickyNoteSmall(note);
     // console.log(NoteObjects)
+})
+
+document.querySelector('#drag .closeiconclick').addEventListener('click',()=>{
+    document.querySelector('.main').classList.add('hide');
 })

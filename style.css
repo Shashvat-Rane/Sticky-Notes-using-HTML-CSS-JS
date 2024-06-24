@@ -20,7 +20,6 @@ body{
     border-radius: 7px;
     box-shadow: 0px 20px 45px rgb(0,0,0,0.7);
     position: absolute;
-    resize: both;
     min-width: 320px;
     min-height: 500px;
     overflow: hidden;
@@ -123,14 +122,24 @@ body{
 
 .notes-list{
     width: calc(100%-20px);
+    height: 370px;
     margin: 10px;
     max-width: 550px;
-    display: flex;
+    
+    overflow-y: scroll;
+}
+
+.no-note{
+    display: none;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
 }
+
+.notes-list::-webkit-scrollbar {
+    display: none;
+  }
 
 .notes-list img{
     width: 100px;
@@ -181,11 +190,11 @@ body{
 .plusiconon img{
     width: 17px;
     margin: auto;
-    opacity: 0.5;
+    opacity: 0.8;
 }
 
 .plusiconon:hover{
-    background-color: #d9ad03;
+    opacity: 0.5;
 }
 
 .settingcrossiconon{
@@ -199,11 +208,11 @@ body{
 .settingiconon img{
     width: 15px;
     margin: auto;
-    opacity: 0.5;
+    opacity: 0.8;
 }
 
 .settingiconon:hover{
-    background-color: #d9ad03;
+    opacity: 0.5;
 }
 
 .closeiconon{
@@ -213,11 +222,11 @@ body{
 .closeiconon img{
     width: 13px;
     margin: auto;
-    opacity: 0.5;
+    opacity: 0.8;
 }
 
 .closeiconon:hover{
-    background-color: #d9ad03;
+    opacity: 0.5;
 }
 
 .textareaon{
@@ -311,7 +320,7 @@ textarea::-webkit-scrollbar-thumb {
     height: 40px;
 }
 .color7{
-    background-color: #454545;
+    background-color: red;
     width: calc(100% / 7);
     height: 40px;
 }
@@ -366,4 +375,121 @@ textarea::-webkit-scrollbar-thumb {
     font-weight: 100;
     letter-spacing: 1px;
     font-size: 13px;
+}
+
+.note{
+    background-color: #404040;
+    /* height: 100px; */
+    margin-top: 10px;
+}
+
+.topline{
+    width: 100;
+    height: 3px;
+    background-color: #e6b905;
+}
+
+.timenoption{
+    display: flex;
+    justify-content: flex-end;
+    height: 30px;
+    align-items: center;
+}
+
+.time{
+    margin: 0;
+    margin-right: 10px;
+    color: #e6b905;
+}
+
+.timenoption img{
+    width: 15px;
+    height: 15px;
+    margin-top: 0;
+    margin-right: 10px;
+}
+
+.timenoption img:hover{
+    cursor: pointer;
+}
+
+.text{
+    color: azure;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 100;
+    text-align: left;
+    margin-left: 5px;
+    margin-right: 5px;
+    height: 70px;
+    /* overflow-x: ; */
+    overflow-wrap: break-word;
+    overflow-y: hidden;
+}
+
+.opendltlist{
+    position: absolute;
+    z-index: 2;
+    background-color: #222222;
+    right: 15px;
+    border: 1px solid rgb(87, 86, 86);
+    box-shadow: 0px 20px 45px rgb(0,0,0,0.7);
+    border-radius: 5px;
+    width: 75px;
+}
+
+
+.openbtn{
+    display: flex;
+    width: 100%;
+    height: 30px;
+    align-items: center;
+}
+.openbtn:hover{
+    background-color: #454545;
+    cursor: pointer;
+}
+.openbtn img{
+    width: 15px;
+    height: 15px;
+    opacity: 0.7;
+    margin: 0;
+    margin-left: 5px;
+}
+.openbtntxt{
+    margin: 0;
+    margin-left: 5px;
+    color: white;
+    opacity: 0.7;
+    font-weight: 100;
+    letter-spacing: 1px;
+    font-size: 11px;
+}
+
+
+
+.dltbtninlist{
+    display: flex;
+    width: 100%;
+    height: 30px;
+    align-items: center;
+}
+.dltbtninlist:hover{
+    background-color: #454545;
+    cursor: pointer;
+}
+.dltbtninlist img{
+    width: 15px;
+    height: 15px;
+    opacity: 0.7;
+    margin: 0;
+    margin-left: 5px;
+}
+.dltbtninlisttxt{
+    margin: 0;
+    margin-left: 5px;
+    color: white;
+    opacity: 0.7;
+    font-weight: 100;
+    letter-spacing: 1px;
+    font-size: 11px;
 }
