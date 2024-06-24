@@ -75,7 +75,7 @@ const createStickyNoteSmall = (notess)=>{
                     </div>
                 </div>
         <div id="text${notess.id}"class="text">
-        <h6 style="color: #efefef;opacity: 0.7;font-weight:10;font-size:15px;margin:15px 10px;">Take a note...</h6>
+            <h6 style="color: #efefef;opacity: 0.7;font-weight:10;font-size:15px;margin:15px 10px;">Take a note...</h6>
         </div>
     `
 
@@ -93,8 +93,39 @@ const createStickyNoteSmall = (notess)=>{
 
     document.querySelector(`#note${notess.id} .dltbtninlist`).addEventListener('click',(e)=>{
         e.stopPropagation();
-        document.querySelector(`#drag${notess.id}`).classList.add('hide');
-        document.querySelector(`#note${notess.id}`).classList.add('hide');
+        document.querySelector(`#drag${notess.id}`).remove();
+        document.querySelector(`#note${notess.id}`).remove();
+        NoteObjects=NoteObjects.filter((n)=>{
+            if(n.id===notess.id){
+                return false;
+            }
+            return true;
+        });
+    })
+
+    let input = document.getElementById('searchtext');
+
+    input.addEventListener('input', (e) => {
+        if(e.target.value===''){
+            for(i=0;i<NoteObjects.length;i++){
+                document.querySelector(`#note${NoteObjects[i].id}`).classList.remove('hide');
+            }
+        }
+        else{
+            for(i=0;i<NoteObjects.length;i++){
+                let text1 = NoteObjects[i].txt;
+                let text2 = e.target.value;
+                text1 = text1.toLowerCase();
+                text2 = text2.toLowerCase();
+
+                if (!text1.includes(text2)) {
+                    document.querySelector(`#note${NoteObjects[i].id}`).classList.add('hide');
+                }
+                else{
+                    document.querySelector(`#note${NoteObjects[i].id}`).classList.remove('hide');
+                }
+            }
+        }
     })
 
 }
@@ -164,8 +195,14 @@ const createStickyNoteFull = (note)=>{
     document.querySelector(`#drag${note.id} .dltbtn`).addEventListener('click',(e)=>{
 
         e.stopPropagation();  
-        document.querySelector(`#drag${note.id}`).classList.add('hide');
-        document.querySelector(`#note${note.id}`).classList.add('hide');
+        document.querySelector(`#drag${note.id}`).remove();
+        document.querySelector(`#note${note.id}`).remove();
+        NoteObjects=NoteObjects.filter((n)=>{
+            if(n.id===note.id){
+                return false;
+            }
+            return true;
+        });
     })
 
 
@@ -188,9 +225,18 @@ const createStickyNoteFull = (note)=>{
 
     document.querySelector(`#drag${note.id} .closeiconon`).addEventListener('click', (e) => {
         if(note.txt===''){
-            document.querySelector(`#note${note.id}`).classList.add('hide');
+            document.querySelector(`#note${note.id}`).remove();
+            document.querySelector(`#drag${note.id}`).remove();
+            NoteObjects=NoteObjects.filter((n)=>{
+                if(n.id===note.id){
+                    return false;
+                }
+                return true;
+            });
         }
-        document.querySelector(`#drag${note.id}`).classList.add('hide');
+        else{
+            document.querySelector(`#drag${note.id}`).classList.add('hide');
+        }
         
     })
 
