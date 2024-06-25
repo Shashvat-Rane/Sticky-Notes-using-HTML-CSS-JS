@@ -2,6 +2,7 @@ let zindexcount =1;
 let NoteObjects = [];
 let ids = 1;
 let lightdark=true;
+let bgc = '#e6b905'
 
 function dragElement(elmnt) {
     var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
@@ -73,8 +74,10 @@ const createStickyNoteSmall = (notess)=>{
             <h6 style="color: #efefef;opacity: 0.7;font-weight:10;font-size:15px;margin:15px 10px;">Take a note...</h6>
         </div>
     `
+    divsmall.querySelector('.topline').style.backgroundColor = bgc;
+    divsmall.querySelector('.time').style.color =bgc;
 
-    document.querySelector('.notes-list').append(divsmall);
+    document.querySelector('.notes-list').prepend(divsmall);
 
     document.querySelector(`#note${notess.id} .option`).addEventListener('click', (e) => {
         e.stopPropagation()
@@ -179,6 +182,7 @@ const createStickyNoteFull = (note)=>{
     `
 
     divhai.style.zIndex=note.z;
+    divhai.querySelector('.header-for-note').style.backgroundColor = bgc;
 
     document.querySelector('#mainspace').append(divhai);
 
@@ -260,42 +264,49 @@ const createStickyNoteFull = (note)=>{
         document.querySelector(`#drag${note.id}`).querySelector('.header-for-note').style.backgroundColor = "#e6b905";
         document.querySelector(`#note${note.id}`).querySelector('.topline').style.backgroundColor = "#e6b905";
         document.querySelector(`#note${note.id}`).querySelector('.time').style.color = "#e6b905";
+        bgc='#e6b905';
     })
     document.querySelector(`#drag${note.id} .color2`).addEventListener('click', (e) => {
         e.stopPropagation()
         document.querySelector(`#drag${note.id}`).querySelector('.header-for-note').style.backgroundColor = "#6fd262";
         document.querySelector(`#note${note.id}`).querySelector('.topline').style.backgroundColor = "#6fd262";
         document.querySelector(`#note${note.id}`).querySelector('.time').style.color = "#6fd262";
+        bgc='#6fd262';
     })
     document.querySelector(`#drag${note.id} .color3`).addEventListener('click', (e) => {
         e.stopPropagation()
         document.querySelector(`#drag${note.id}`).querySelector('.header-for-note').style.backgroundColor = "#ea86c2";
         document.querySelector(`#note${note.id}`).querySelector('.topline').style.backgroundColor = "#ea86c2";
         document.querySelector(`#note${note.id}`).querySelector('.time').style.color = "#ea86c2";
+        bgc='#ea86c2';
     })
     document.querySelector(`#drag${note.id} .color4`).addEventListener('click', (e) => {
         e.stopPropagation()
         document.querySelector(`#drag${note.id}`).querySelector('.header-for-note').style.backgroundColor = "#c78eff";
         document.querySelector(`#note${note.id}`).querySelector('.topline').style.backgroundColor = "#c78eff";
         document.querySelector(`#note${note.id}`).querySelector('.time').style.color = "#c78eff";
+        bgc='#c78eff';
     })
     document.querySelector(`#drag${note.id} .color5`).addEventListener('click', (e) => {
         e.stopPropagation()
         document.querySelector(`#drag${note.id}`).querySelector('.header-for-note').style.backgroundColor = "#5ac0e7";
         document.querySelector(`#note${note.id}`).querySelector('.topline').style.backgroundColor = "#5ac0e7";
         document.querySelector(`#note${note.id}`).querySelector('.time').style.color = "#5ac0e7";
+        bgc='#5ac0e7';
     })
     document.querySelector(`#drag${note.id} .color6`).addEventListener('click', (e) => {
         e.stopPropagation()
         document.querySelector(`#drag${note.id}`).querySelector('.header-for-note').style.backgroundColor = "#aaaaaa";
         document.querySelector(`#note${note.id}`).querySelector('.topline').style.backgroundColor = "#aaaaaa";
         document.querySelector(`#note${note.id}`).querySelector('.time').style.color = "#aaaaaa";
+        bgc='#aaaaaa';
     })
     document.querySelector(`#drag${note.id} .color7`).addEventListener('click', (e) => {
         e.stopPropagation()
         document.querySelector(`#drag${note.id}`).querySelector('.header-for-note').style.backgroundColor = "red";
         document.querySelector(`#note${note.id}`).querySelector('.topline').style.backgroundColor = "red";
         document.querySelector(`#note${note.id}`).querySelector('.time').style.color = "red";
+        bgc='red';
     })
 
     const ta = divhai.querySelector('.textareaon');
